@@ -11,8 +11,10 @@
 
 class Employee:
     empAmount = 0
+    overtime_bonus = 0
 
     'Constructor'
+
     def __init__(self, name, years, specialty, salary, ):
         self.name = name
         self.years = years
@@ -21,28 +23,29 @@ class Employee:
         Employee.empAmount += 1
 
     'The method shows the employee`s salary'
+
     def show_emp_salary(self):
-        print("Name : ", self.name, ", Salary: ", self.salary)
+        print(f'Name : {self.name}, Salary: {self.salary}')
 
     'The method shows the employee`s specialty'
+
     def show_emp_specialty(self):
-        print("Name : ", self.name, ", Specialty: ", self.specialty)
+        print(f'Name : {self.name}, Specialty: {self.specialty}')
 
-    'The method shows the employee`s overtime bonus'
-    def show_overtime_bonus(self):
-        print("Bonus amount for overtime: ", self.overtime_bonus)
+    'The class method show the overtime bonus'
 
-    'The class method sets the overtime bonus'
     @classmethod
-    def overtime_bonus(cls, overtime_bonus):
-        cls.overtime_bonus = overtime_bonus
+    def show_overtime_bonus_for_employees(cls):
+        print(f'Bonus amount for overtime: {cls.overtime_bonus}')
 
     'The method shows the number of all employees'
+
     @staticmethod
     def show_emp_amount():
-        print("Total Employee %d" % Employee.empAmount)
+        print(f'Total Employee: {Employee.empAmount}')
 
     'The method shows the assigned tasks by specialties'
+
     @staticmethod
     def assigned_task(specialty):
         print('Your assigned tasks:')
@@ -62,17 +65,18 @@ emp_Alex.show_emp_amount()
 emp_Alex.show_emp_salary()
 emp_Alex.show_emp_specialty()
 print(emp_Alex.assigned_task("Dev"))
-Employee.overtime_bonus(500)
-Employee.show_emp_amount()
-emp_Alex.show_overtime_bonus()
+Employee.overtime_bonus = 1000
+Employee.show_overtime_bonus_for_employees()
+emp_Alex.show_overtime_bonus_for_employees()
 
 
 class Company:
     all_revenue = 0
+    annual_dep_bonus = 0
 
     'Constructor'
 
-    def __init__(self,company_name, dep_name, emp_number, profit, expenses ):
+    def __init__(self, company_name, dep_name, emp_number, profit, expenses):
         self.company_name = company_name
         self.dep_name = dep_name
         self.emp_number = emp_number
@@ -81,37 +85,44 @@ class Company:
         Company.all_revenue += profit
 
     'The method shows the company name'
+
     def show_company_name(self):
-            print("Company name : ", self.company_name)
+        print(f'Company name : {self.company_name}')
 
     'The method shows the department profit'
+
     def show_dep_profit(self):
-        print("Department name : ", self.dep_name, ", Profit: ", self.profit)
+        print(f'Department name : {self.dep_name}, Profit: {self.profit}')
 
     'The method shows the department expenses'
+
     def show_dep_expenses(self):
-        print("Department name : ", self.dep_name, ", Expenses: ", self.expenses)
+        print(f'Department name : {self.dep_name}, Expenses: {self.expenses}')
 
     'The method shows the general annual department bonus'
-    def show_annual_dep_bonus(self):
-        print("General annual department bonus: ", self.annual_dep_bonus)
+
+    def show_annual_dep_bonus(cls):
+        print(f'General annual department bonus: {cls.annual_dep_bonus}')
 
     'The class method sets the annual department bonus'
+
     @classmethod
     def set_annual_dep_bonus(cls, profit):
         if profit < 100000:
             cls.annual_dep_bonus = 5000
-        elif profit > 100000:
+        elif profit < 500000:
             cls.annual_dep_bonus = 15000
         elif profit > 500000:
             cls.annual_dep_bonus = 30000
 
     'The method shows the all companies revenue'
+
     @staticmethod
     def show_all_companies_revenue():
-        print("Total Companies revenue %d" % Company.all_revenue)
+        print(f'Total Companies revenue: {Company.all_revenue}')
 
     'The method shows the current client by departments'
+
     @staticmethod
     def current_clients(dep_name):
         print('Your current clients:')
@@ -124,12 +135,12 @@ class Company:
         return clients
 
 
-my_company = Company("FTX", "Finance", 100 , 500000,10000)
-my_company2 = Company("Binance", "Finance", 1000 , 2500000,20000)
+my_company = Company("FTX", "Finance", 100, 600000, 10000)
+my_company2 = Company("Binance", "Finance", 1000, 2500000, 20000)
 my_company.show_company_name()
 my_company.show_dep_profit()
 my_company.show_dep_expenses()
 print(my_company.current_clients("Finance"))
-Company.set_annual_dep_bonus(500000)
+Company.set_annual_dep_bonus(600000)
 my_company.show_annual_dep_bonus()
 Company.show_all_companies_revenue()
