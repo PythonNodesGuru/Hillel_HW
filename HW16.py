@@ -100,7 +100,7 @@ class Company:
         print(f'Department name : {self.dep_name}, Expenses: {self.expenses}')
 
     'The method shows the general annual department bonus'
-
+    @classmethod
     def show_annual_dep_bonus(cls):
         print(f'General annual department bonus: {cls.annual_dep_bonus}')
 
