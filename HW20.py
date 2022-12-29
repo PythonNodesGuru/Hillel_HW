@@ -8,22 +8,22 @@ import time
 
 
 class Timer:
-
-    def __init__(self):
-        self.start = time.time()
+    _elapsed_time = 0
 
     def __enter__(self):
+        self.start = time.time()
         return self
 
     def __exit__(self, type, value, traceback):
+        self._elapsed_time += time.time() - self.start
         self.end = time.time()
 
     @property
     def elapsed_time(self):
-        delta = time.time() - self.start
-        return delta
+        return self._elapsed_time
 
     def reset(self):
+        self._elapsed_time = 0
         self.start = time.time()
 
 
