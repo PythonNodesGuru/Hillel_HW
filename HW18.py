@@ -10,6 +10,10 @@ class AttributePrinterMixin:
         rows = []
 
         for k, v in self.__dict__.items():
+            for parent in self.__class__.__bases__:
+                parent_name = parent.__name__
+                if k.startswith(f'_{parent_name}__'):
+                    k = k.replace(f'_{parent_name}__', '')
             if k.startswith(f'_{class_name}__'):
                 k = k.replace(f'_{class_name}__', '')
             if k.startswith('_'):
@@ -19,7 +23,7 @@ class AttributePrinterMixin:
         output_value = ''
 
         for row in rows:
-            output_value+=f'\n    {row}'
+            output_value += f'\n    {row}'
         return f'''{class_name}: {{{output_value}\n}}'''
 
 # Протектед и приватные аттрибуты должны выводить только свое имя (без знака подчеркивания для протектед и префикса "_<имя класса>__")
@@ -40,3 +44,22 @@ print(a)
 #    protected_field: q
 #    private_field: [1, 2, 3]
 # }
+
+
+# Можно сказать, что дальше это уже задача со звездочкой, но у тебя не процессятся приватные аттрибуты суперклассов
+class Super:
+    def __init__(self):
+        self.__super_private = 111
+
+class Sub(Super, AttributePrinterMixin):
+    def __init__(self):
+        super().__init__()
+
+sub = Sub()
+print(sub)
+
+"""
+Sub: {
+    Super__super_private: 111  # Should be super_private: 111
+}
+"""
