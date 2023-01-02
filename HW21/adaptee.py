@@ -1,15 +1,4 @@
-from abc import ABC, abstractmethod
-
-
-class IUkPlug(ABC):
-
-    @staticmethod
-    @abstractmethod
-    def electricity_220v():
-        """electricity supply, in VOLT"""
-
-
-class UkPlug(IUkPlug):
-
-    def electricity_220v(self):
-        print("220 Volt")
+# Европейская вилка
+class EuroFork:
+    def power_euro(self):
+        print('power on. Euro')

@@ -1,7 +1,12 @@
-from target import IUsSocket
+class UsaFork:
+    def power_usa(self):
+        print('power on. Usa')
 
 
-class UsSocket(IUsSocket):
+# Американская розетка
+class UsaSocket:
+    def __init__(self, fork):
+        self.fork = fork
 
-    def electricity_110v(self):
-        print("110 Volt")
+    def connect(self):
+        self.fork.power_usa()

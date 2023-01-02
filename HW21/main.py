@@ -1,10 +1,13 @@
-from adaptee import UkPlug
-from adapter import UktoUsAdapter
+from adapter import AdapterEuroInUsa
+from client import UsaSocket,UsaFork
 
 
-my_plug = UkPlug()
-my_plug.electricity_220v()
-#220 Volt
-my_plug = UktoUsAdapter()
-my_plug.electricity_220v()
-#110 Volt
+# Вставляем американскую вилку в американскую розетку.
+uf = UsaFork() 
+us = UsaSocket(uf) 
+us.connect() 
+# >>> power on. Usa
+# Вставляем евро-адаптер в американскую розетку. 
+ad = AdapterEuroInUsa()
+us = UsaSocket(ad)
+us.connect() 

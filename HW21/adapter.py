@@ -1,11 +1,10 @@
-from adaptee import IUkPlug
-from client import UsSocket
+from adaptee import EuroFork
 
 
-class UktoUsAdapter(IUkPlug):
+class AdapterEuroInUsa:
 
     def __init__(self):
-        self.us_socket = UsSocket()
+        self._euro_fork = EuroFork()
 
-    def electricity_220v(self):
-        self.us_socket.electricity_110v()
+    def power_usa(self):
+        self._euro_fork.power_euro()
