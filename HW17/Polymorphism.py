@@ -13,7 +13,7 @@ class Academic(Book):
         self.branch = branch
 
     def __repr__(self):
-        return f'Book: {self.title}, Branch: {self.branch}, Quantity: {self.quantity}, Author: {self.author}, Price: {self.get_price()} '
+        return f'{super().__repr__()}, Branch: {self.branch}'
 
 
 novel1 = Novel('Novel Book', 20, 'Novel Author', 200, 187)

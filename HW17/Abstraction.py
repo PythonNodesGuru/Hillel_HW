@@ -18,7 +18,7 @@ class Book(ABC):
 
     @abstractmethod
     def __repr__(self):
-        return f'Book: {self.title}, Quantity: {self.quantity}, Author: {self.author}, Price: {self.get_price()}'
+        pass
 
 
 class Novel(Book):

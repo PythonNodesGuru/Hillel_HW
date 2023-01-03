@@ -24,7 +24,8 @@ bulk_books = Book('Book 1', 25, 'Author 2', 200)
 
 bulk_books.set_discount(0.20)
 
-# print(single_book.get_price())
-# print(bulk_books.get_price())
-# print(single_book)
-# print(bulk_books)
+if __name__ == '__main__':
+    print(single_book.get_price())
+    print(bulk_books.get_price())
+    print(single_book)
+    print(bulk_books)
